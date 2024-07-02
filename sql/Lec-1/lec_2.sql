@@ -135,7 +135,7 @@ update product_master set qtyonhand = 10 where description = 'Trousers';
 delete from product_master where description = 'Shirts';
 
 
-(3)a.  select NAME from CLIENT_MASTER;
+(3)a.  select NAME from CLIENT_MASTER; 
 
 
 b. select * from client_master;
@@ -147,7 +147,7 @@ d. SELECT DESCRIPTION FROM PRODUCT_MASTER;
 e. SELECT NAME FROM CLIENT_MASTER WHERE CITY = 'mumbai';
 
 f. SELECT SalesmanName FROM SALESMAN_MASTER WHERE SalAmt = 3000;
-
+l
 (4)
 a.  update CLIENT_MASTER set CITY = 'Bangalore' where CLIENTNO = 'C0005';
 
@@ -156,6 +156,27 @@ b. update client_master set BalDue = 1000 where ClientNo = 'C00001';
 c. update product_master set CostPrice = 950 where Description = 'Trousers';
 
 d.  update salesman_master set City = 'Pune';
+
+
+## What is SQL?
+
+- SQL stands for Structured Query Language.
+- SQL lets you access and manipulate databases.
+- SQL became a standard of the American National Standards Institute (ANSI) in 1986, and of the International Organization for Standardization (ISO) in 1987.
+
+## What Can SQL do?
+
+- SQL can execute queries against a database.
+- SQL can retrieve data from a database.
+- SQL can insert records in a database.
+- SQL can update records in a database.
+- SQL can delete records from a database.
+- SQL can create new databases.
+- SQL can create new tables in a database.
+- SQL can create stored procedures in a database.
+- SQL can create views in a database.
+- SQL can set permissions on tables, procedures, and views.
+
 
 
 
