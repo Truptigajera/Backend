@@ -53,3 +53,10 @@ set an upper limit on number of (tuples) rows to be return.
 select * from students limit 3;
 
 select maths,eng from students;
+
+Limit
+select age,city from students limit 5;
+
+order by clause
+select * from students order by city ASC;
+

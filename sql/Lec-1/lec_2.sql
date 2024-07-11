@@ -57,11 +57,11 @@ use user;
 4.  insert into CLIENT_MASTER(CLIENTNO, NAME, ADDRESS1, ADDRESS2, CITY, PINCODE, STATE, BALDUE) values 
   insert into CLIENT_MASTER(CLIENTNO, NAME, ADDRESS1, ADDRESS2, CITY, PINCODE, STATE, BALDUE) values
   ('C00001','Ivan Bayross','a/102','gangajamna soc','surat','395006','Gujarat','15000'),
-  ('C0002','Mamta Muzundar','b/202','light street','Madras','780001','TamilNadu','0'),
-  ('C0003','Chhaya Bankar','c/001','borivali','Mumbai','400057','MAharashtra','5000'),
-  ('C0004','Ashwini joshi','d/102','jelly street','Baglore','560001','Karnataka','0'),
-  ('C0005','Hansel Coleco','B/202','Kandivali','Mumbai','400060','Maharastra','2000'),
-  ('C0006','Deepak Sharma','C/505','angel park','Mangolre','560056','Karnataka','0');
+  ('C00002','Mamta Muzundar','b/202','light street','Madras','780001','TamilNadu','0'),
+  ('C00003','Chhaya Bankar','c/001','borivali','Mumbai','400057','MAharashtra','5000'),
+  ('C00004','Ashwini joshi','d/102','jelly street','Baglore','560001','Karnataka','0'),
+  ('C00005','Hansel Coleco','B/202','Kandivali','Mumbai','400060','Maharastra','2000'),
+  ('C00006','Deepak Sharma','C/505','angel park','Mangolre','560056','Karnataka','0');
 
 1.  --\ create database PRODUCT_MASTER;
 
@@ -102,16 +102,16 @@ use user;
 2.  --\show databases;
 
 3.  create table SALESMAN_MASTER(
-    SalesmanNo varchar(6),
-    SalesmanName varchar(20),
-    ADDRESS1 varchar(30),
+    SalesmanNo varchar(6) primary key,
+    SalesmanName varchar(20) not null,
+    ADDRESS1 varchar(30) not null,
     ADDRESS2 varchar(30),
     CITY varchar(20),
     PINCODE int,
     STATE varchar(20),
-    SalAmt int,
-    TrgToGet int,
-    YTDSales int,
+    SalAmt int not null,
+    TrgToGet int not null,
+    YTDSales int not null,
     Remarks varchar (60)    
     );
 
@@ -158,24 +158,68 @@ c. update product_master set CostPrice = 950 where Description = 'Trousers';
 d.  update salesman_master set City = 'Pune';
 
 
-## What is SQL?
+select * from customers;
+select * from employees;
 
-- SQL stands for Structured Query Language.
-- SQL lets you access and manipulate databases.
-- SQL became a standard of the American National Standards Institute (ANSI) in 1986, and of the International Organization for Standardization (ISO) in 1987.
+-- 2. Fetch & display employee details for the employees having job Title='Sales Rep' and Employee number between 1200 and 1500
+select * from employees where jobTitle = "Sales Rep" and employeeNumber between 1200 and 1500;
 
-## What Can SQL do?
+-- 3. Fetch & display employee details for the employees having office code 2 or more than 2 and job title is not Sales Rep
+select * from employees where officeCode >= 2 and jobtitle = 'Sales Rep';
 
-- SQL can execute queries against a database.
-- SQL can retrieve data from a database.
-- SQL can insert records in a database.
-- SQL can update records in a database.
-- SQL can delete records from a database.
-- SQL can create new databases.
-- SQL can create new tables in a database.
-- SQL can create stored procedures in a database.
-- SQL can create views in a database.
-- SQL can set permissions on tables, procedures, and views.
+-- 4. Fetch & display customers details(Customers table) who does not belongs to USA
+select * from customers where country not in ("USA");
+
+-- 5. Fetch & display customers details(Customers table)  having customer number not in the range 150 to 200
+select *from customers where customerNumber not between 150 and 200;
+
+--  6. List out last name, first name for all employees and rename  last name as “Name of the employee”, display as sorting order of their last name
+select concat(lastname , "  ", firstname) as  Name_of_the_employees from employees order by lastname;
+
+-- 7.  List out the customers having credit limit is more than 70000 display in descending order by their last name.
+select * from customers where creditLimit > 70000 order by contactLastName desc;
+ 
+ -- 8. List out all customers belongs to city Singapore, Liverpool or NYC
+ select * from customers where city in ("stavern" , "NYC" , "Liverpool");
+ 
+ -- 	9.List the details about customer first name “SMITH”
+ select * from customers where contactlastName like "smith";
+ 
+ -- 10. List out the employees who are working in office code 1, 3 , 5
+ select * from employees where officeCode in (1,3,5);
+
+-- 11. List out the customer having credit limit between 50000 and 95000
+select * from customers where creditLimit between 50000 and 95000;
+
+-- 12.12. List out the employees who are not working in office code 1 , 3
+select * from employees where officeCode not in (1,3);
+
+-- 13. List out the customers whose first name starts with “S”
+select * from  customers where contactFirstName like "s%";
+
+-- 14. List out the customers whose name start with “S” and end with “H”
+select * from customers where contactFirstName like "s%h";
+
+-- 15. List out the customers whose first name length is 5 and start with “S”
+select contactfirstname from customers where contactFirstName like "S____";
+
+-- 16. 16. List out the customers whose first name length is exactly 8
+select contactfirstname from customers where contactFirstName like "________";
+
+-- 17. List out the customers whose first name starting with a and ending with e
+select contactfirstname from customers where contactFirstName like "a%e ";
+
+-- 18. List out the customers whose first name contains ee
+select contactFirstname from customers where contactFirstname like "ee%";
+
+-- 19. Show Count of employees who are working in different office in the organization
+select officeCode ,  count(officecode) from employees group by officeCode;
+
+-- 20. List out the maximum credit limit of customers belongs to different states
+select state , max(creditlimit) from customers group by state;
+ 
+ 
+
 
 
 
