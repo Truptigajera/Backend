@@ -1,3 +1,5 @@
+
+
 create table SALESMAN_MASTER1(
     SalesmanNo varchar(6) primary key,
     SalesmanName varchar(20) not null,

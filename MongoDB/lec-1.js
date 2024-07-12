@@ -1,5 +1,5 @@
 //use dbname
-use users
+//use users
 
 //create collection
 db.createCollection("users")
@@ -40,7 +40,7 @@ db.users.insertMany([
 
 db.users.find()
 
-db.users.find({"floop": "sui-thaga"})
+db.users.find({"movies.flop": 'sui-thaga'})
 
 db.users.findOne({gender: "female"})
 
@@ -54,18 +54,18 @@ db.users.updateOne(
 )
 
 db.users.updateMany(
-    {gender: "female"},
+    {gender: "male"},
     {$set:{Passion:"Make-up"}},
     {upsert: true} 
 )
 
 db.users.deleteOne({filter})
-db.users.deleteOne({_id: ObjectId ('id')})
+db.users.deleteOne({_id: ObjectId ('668fb0a48299decaeacc8988')})
 
 db.users.deleteMany({gender: 'female'})
 
 db.users.drop()
 
-show collections
+//show collections
 
 db.dropDatabase()
